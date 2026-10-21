@@ -1,0 +1,6 @@
+import { Bookmark } from "lucide-react";
+import PostCard from "../components/PostCard";
+export default function Bookmarks({ posts, onLike, onBookmark, onComment }) {
+  const saved = posts.filter(p => p.bookmarked);
+  return <div><div className="mb-4 flex items-center gap-3"><span className="grid h-11 w-11 place-items-center rounded-xl bg-blue-50 text-brand-600"><Bookmark/></span><div><h1 className="text-xl font-extrabold">Bookmarks</h1><p className="text-sm text-slate-400">Posts you saved for later.</p></div></div>{saved.length ? <div className="space-y-4">{saved.map(p=><PostCard key={p.id} post={p} onLike={onLike} onBookmark={onBookmark} onComment={onComment}/>)}</div>:<div className="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center"><Bookmark size={28} className="mx-auto text-slate-300"/><h2 className="mt-3 font-bold">No bookmarks yet</h2><p className="mt-1 text-sm text-slate-500">Save a post using the bookmark icon and it will show up here.</p></div>}</div>;
+}
